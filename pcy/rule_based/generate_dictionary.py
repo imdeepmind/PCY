@@ -14,7 +14,9 @@ class DictionaryGenerator:
 
         if is_child_node_exists:
             child_node = is_child_node_exists
-            child_node.add_word(current_word)
+
+            if child_node.word is None:
+                child_node.add_word(current_word)
         else:
             child_node = Node(current_chr, word=current_word, parent=node)
             node.add_child(child_node)

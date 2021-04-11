@@ -93,6 +93,9 @@ class Node:
     def complete_word(self, incomplete_word, no_of_words):
         root_node = Node.__search_tree(incomplete_word.lower(), node=self)
 
+        if not root_node:
+            return False
+
         return Node.__find_nth_words(root_node, no_of_words)
 
     def print_tree(self):
