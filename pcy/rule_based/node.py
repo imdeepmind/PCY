@@ -21,9 +21,8 @@ class Node:
 
         return Node.__search_tree(word, index + 1, child_node)
 
-    @staticmethod
-    def __find_nth_words(node, no_of_words, index=0):
-        if index + 1 > no_of_words:
+    def __find_nth_words(self, node, no_of_words):
+        if self.__found_words > no_of_words:
             return []
 
         words = []
@@ -31,9 +30,10 @@ class Node:
         if node.word:
             words.append(node.word)
 
+        self.__found_words += 1
         if len(node.children) > 0:
             for child in node.children:
-                words += Node.__find_nth_words(child, no_of_words, index + 1)
+                words += self.__find_nth_words(child, no_of_words)
 
         return words
 
@@ -74,6 +74,7 @@ class Node:
         self.__word = word
         self.__parent = parent
         self.__children = []
+        self.__found_words = 0
 
     def add_child(self, node):
         if isinstance(node, Node):
@@ -90,13 +91,13 @@ class Node:
     def add_word(self, word):
         self.__word = word
 
-    def complete_word(self, incomplete_word, no_of_words):
+    def autocomplete_incomplete_word(self, incomplete_word, no_of_words):
         root_node = Node.__search_tree(incomplete_word.lower(), node=self)
 
         if not root_node:
             return False
 
-        return Node.__find_nth_words(root_node, no_of_words)
+        return self.__find_nth_words(root_node, no_of_words)
 
     def print_tree(self):
         print(Node.__print_tree(self))

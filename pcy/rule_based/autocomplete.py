@@ -20,4 +20,6 @@ class Autocomplete:
         if no_of_suggestions < 1:
             raise ValueError("Please provide a valid no_of_suggestions")
 
-        return self.__dictionary.complete_word(incomplete_word, no_of_suggestions)
+        return self.__dictionary.autocomplete_incomplete_word(
+            incomplete_word, no_of_suggestions
+        )
