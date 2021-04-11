@@ -27,6 +27,14 @@ class DictionaryGenerator:
         if len(word) > index + 1:
             DictionaryGenerator.__generate_tree(word, index=index + 1, node=child_node)
 
+    @classmethod
+    def load_dictionary(cls, path):
+        if not isinstance(path, str) and not path:
+            raise ValueError("Please provide a valid path to load the data")
+
+        with open(path, "rb") as f:
+            return pickle.load(f)
+
     def __init__(self, words):
         if not isinstance(words, list):
             raise ValueError("Please provide a valid list of words")
@@ -40,7 +48,12 @@ class DictionaryGenerator:
         tree = Node("ROOT")
 
         for index, word in enumerate(self.__words):
-            progressbar(index, len(self.__words), f"{index+1}/{len(self.__words)}", f"Current Char: {word[0]}")
+            progressbar(
+                index,
+                len(self.__words),
+                f"{index+1}/{len(self.__words)}",
+                f"Current Char: {word[0]}",
+            )
             DictionaryGenerator.__generate_tree(word.lower(), node=tree)
 
         self.__tree = tree
@@ -48,11 +61,8 @@ class DictionaryGenerator:
         return self.__tree
 
     def save_dictionary(self, path):
+        if not isinstance(path, str) and not path:
+            raise ValueError("Please provide a valid path to save the data")
+
         with open(path, "wb") as f:
             pickle.dump(self.__tree, f)
-    
-    @classmethod
-    def load_dictionary(cls, path):
-        with open(path, "rb") as f:
-            return pickle.load(f)
-    
