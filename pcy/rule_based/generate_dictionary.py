@@ -1,3 +1,6 @@
+import pickle
+
+from py_progress import progressbar
 from .node import Node
 
 
@@ -36,7 +39,20 @@ class DictionaryGenerator:
     def generate_dictionary(self):
         tree = Node("ROOT")
 
-        for word in self.__words:
+        for index, word in enumerate(self.__words):
+            progressbar(index, len(self.__words), f"{index+1}/{len(self.__words)}", f"Current Char: {word[0]}")
             DictionaryGenerator.__generate_tree(word.lower(), node=tree)
 
-        return tree
+        self.__tree = tree
+
+        return self.__tree
+
+    def save_dictionary(self, path):
+        with open(path, "wb") as f:
+            pickle.dump(self.__tree, f)
+    
+    @classmethod
+    def load_dictionary(cls, path):
+        with open(path, "rb") as f:
+            return pickle.load(f)
+    
