@@ -37,6 +37,21 @@ class Node:
 
         return words
 
+    @staticmethod
+    def __print_tree(node, level=0):
+        level += 1
+        message = ""
+
+        dash = "--" * level
+        message += f"{dash}{node.__key}({node.__word})"
+
+        if len(node.children) < 1:
+            return message
+
+        for child in node.children:
+            message += f"\n{Node.__print_tree(child, level)}"
+        
+        return message
     # Getters
     @property
     def key(self):
@@ -79,3 +94,7 @@ class Node:
         root_node = Node.__search_tree(incomplete_word.lower(), node=self)
 
         return Node.__find_nth_words(root_node, no_of_words)
+
+    def print_tree(self):
+        print(Node.__print_tree(self))
+        
