@@ -1,3 +1,14 @@
+"""Generate a dictionary tree based on words.
+
+Raises:
+    ValueError: If the path is not valid
+    ValueError: If the provided words list is not valid
+    ValueError: If the words list is empty
+    ValueError: If the path is not valid
+
+Returns:
+    node: Dictionary tree node
+"""
 import pickle
 
 from py_progress import progressbar
@@ -5,8 +16,29 @@ from .node import Node
 
 
 class DictionaryGenerator:
+    """Generate a tree based on words list.
+
+    Raises:
+        ValueError: If the path is not valid
+        ValueError: If the provided words list is not valid
+        ValueError: If the words list is empty
+        ValueError: If the path is not valid
+
+    Returns:
+        node: Dictionary tree node
+    """
+
     @staticmethod
     def __generate_tree(word, index=0, node=None):
+        """Generate a tree based on the word.
+
+        Args:
+            word (str): Word for adding to the tree
+            index (int, optional): Index to track the recursive loop.
+                                   Defaults to 0.
+            node (node, optional): Current node in the dictionary tree.
+                                   Defaults to None.
+        """
         current_chr = word[index]
 
         current_word = None
@@ -29,6 +61,17 @@ class DictionaryGenerator:
 
     @classmethod
     def load_dictionary(cls, path):
+        """Load a dictionary from filesystem.
+
+        Args:
+            path (str): Path to the saved dictionary
+
+        Raises:
+            ValueError: If the path is not valid
+
+        Returns:
+            node: Returns a dictionary tree
+        """
         if not isinstance(path, str) and not path:
             raise ValueError("Please provide a valid path to load the data")
 
@@ -36,6 +79,15 @@ class DictionaryGenerator:
             return pickle.load(f)
 
     def __init__(self, words):
+        """Generate dictionary tree based on words list.
+
+        Args:
+            words (str[]): List of words
+
+        Raises:
+            ValueError: If the words list is not a valid list
+            ValueError: If the words list is empty
+        """
         if not isinstance(words, list):
             raise ValueError("Please provide a valid list of words")
 
@@ -45,6 +97,11 @@ class DictionaryGenerator:
         self.__words = words
 
     def generate_dictionary(self):
+        """Generate a dictionary tree.
+
+        Returns:
+            node: Returns a dictionary tree.
+        """
         tree = Node("ROOT")
 
         for index, word in enumerate(self.__words):
@@ -61,6 +118,14 @@ class DictionaryGenerator:
         return self.__tree
 
     def save_dictionary(self, path):
+        """Save dictionary to file.
+
+        Args:
+            path (str): Path to store the dictionary.
+
+        Raises:
+            ValueError: If the path provided is not valid
+        """
         if not isinstance(path, str) and not path:
             raise ValueError("Please provide a valid path to save the data")
 
