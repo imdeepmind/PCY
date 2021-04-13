@@ -50,8 +50,9 @@ class Node:
 
         for child in node.children:
             message += f"\n{Node.__print_tree(child, level)}"
-        
+
         return message
+
     # Getters
     @property
     def key(self):
@@ -101,4 +102,3 @@ class Node:
 
     def print_tree(self):
         print(Node.__print_tree(self))
-        
