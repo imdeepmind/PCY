@@ -117,6 +117,28 @@ class DictionaryGenerator:
 
         return self.__tree
 
+    def add_word_to_dictionary(self, word):
+        """Add word to the dictionary.
+
+        Args:
+            word (str): Word to add.
+
+        Raises:
+            ValueError: If the word is not valid string.
+            ValueError: If the word is not a valid word.
+            ValueError: If there is no dictionary.
+        """
+        if isinstance(word, str):
+            raise ValueError("Please provide a valid word")
+
+        if not word:
+            raise ValueError("Please provide a word to add")
+
+        if not self.__tree:
+            raise ValueError("Please create a dictionary first")
+
+        self.__generate_tree(word, node=self.__tree)
+
     def save_dictionary(self, path):
         """Save dictionary to file.
 
