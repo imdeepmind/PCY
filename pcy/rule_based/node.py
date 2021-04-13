@@ -29,8 +29,8 @@ class Node:
 
         if node.word:
             words.append(node.word)
+            self.__found_words += 1
 
-        self.__found_words += 1
         if len(node.children) > 0:
             for child in node.children:
                 words += self.__find_nth_words(child, no_of_words)
