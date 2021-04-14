@@ -12,7 +12,7 @@ Returns:
 import pickle
 
 from py_progress import progressbar
-from .node import Node
+from ._node import _Node as Node
 
 
 class DictionaryGenerator:
@@ -112,6 +112,8 @@ class DictionaryGenerator:
                 f"Current Char: {word[0]}",
             )
             DictionaryGenerator.__generate_tree(word.lower(), node=tree)
+
+        print("")
 
         self.__tree = tree
 

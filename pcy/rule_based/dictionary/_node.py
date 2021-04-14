@@ -10,7 +10,7 @@ Returns:
 """
 
 
-class Node:
+class _Node:
     """Node in the dictionary tree.
 
     A node contains the key, the word, it;s parent, and its children.
@@ -56,12 +56,12 @@ class Node:
 
         current_key = word[index]
 
-        child_node = Node.__find_key_in_level(node, current_key)
+        child_node = _Node.__find_key_in_level(node, current_key)
 
         if not child_node:
             return False
 
-        return Node.__search_tree(word, index + 1, child_node)
+        return _Node.__search_tree(word, index + 1, child_node)
 
     def __find_nth_words(self, node, no_of_words):
         """Find suggestions from the tree.
@@ -109,7 +109,7 @@ class Node:
             return message
 
         for child in node.children:
-            message += f"\n{Node.__print_tree(child, level)}"
+            message += f"\n{_Node.__print_tree(child, level)}"
 
         return message
 
@@ -175,7 +175,7 @@ class Node:
         Raises:
             ValueError: If the node is not valid.
         """
-        if isinstance(node, Node):
+        if isinstance(node, _Node):
             self.__children.append(node)
         else:
             raise ValueError("Please provide a valid node to append")
@@ -189,7 +189,7 @@ class Node:
         Returns:
             bool: Returns true if node exists.
         """
-        return True if Node.__find_key_in_level(self, key) else False
+        return True if _Node.__find_key_in_level(self, key) else False
 
     def get_child_node(self, key):
         """Get the node based on key.
@@ -200,7 +200,7 @@ class Node:
         Returns:
             node: Returns the node
         """
-        return Node.__find_key_in_level(self, key)
+        return _Node.__find_key_in_level(self, key)
 
     def add_word(self, word):
         """Add word in the node.
@@ -220,7 +220,7 @@ class Node:
         Returns:
             str[]: Suggested words based on the node.
         """
-        root_node = Node.__search_tree(incomplete_word.lower(), node=self)
+        root_node = _Node.__search_tree(incomplete_word.lower(), node=self)
 
         if not root_node:
             return False
@@ -229,4 +229,4 @@ class Node:
 
     def print_tree(self):
         """Print a string representation for the node."""
-        print(Node.__print_tree(self))
+        print(_Node.__print_tree(self))

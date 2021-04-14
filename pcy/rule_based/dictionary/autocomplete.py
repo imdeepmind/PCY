@@ -12,7 +12,7 @@ Returns:
     str[]: Array of string containing suggestions
 """
 
-from .node import Node
+from ._node import _Node as Node
 
 
 class Autocomplete:

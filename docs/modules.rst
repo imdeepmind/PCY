@@ -1,4 +1,4 @@
-PCY
+pcy
 ===
 
 .. toctree::

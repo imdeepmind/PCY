@@ -20,14 +20,6 @@ pcy.rule\_based.dictionary.generate\_dictionary module
    :undoc-members:
    :show-inheritance:
 
-pcy.rule\_based.dictionary.node module
---------------------------------------
-
-.. automodule:: pcy.rule_based.dictionary.node
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
 Module contents
 ---------------
 
