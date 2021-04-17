@@ -9,7 +9,22 @@ from ._node import _Node as Node
 class DictionaryGenerator:
     """Generate a dictionary tree based on words.
 
-    
+    The DictionaryGenerator class generates dictionary tree that can be used the Autocomplete class to
+    autocomplete incomplete words. 
+
+    Code Example:
+        .. code-block:: python
+
+            from pcy.rule_based.dictionary import DictionaryGenerator
+
+            # words list
+            words = ["Apple", "Anaconda"]
+
+            # initializing the DictionaryGenerator class
+            gen = DictionaryGenerator(words)
+
+            # generating the tree
+            tree = gen.generate_dictionary()
 
     :raises ValueError: When the words is not a valid list
     :raises ValueError: When there is no words in the words list
@@ -23,15 +38,7 @@ class DictionaryGenerator:
     """
     @staticmethod
     def __generate_tree(word, index=0, node=None):
-        """Generate a tree based on the word.
-
-        Args:
-            word (str): Word for adding to the tree
-            index (int, optional): Index to track the recursive loop.
-                                   Defaults to 0.
-            node (node, optional): Current node in the dictionary tree.
-                                   Defaults to None.
-        """
+        """Generate a tree based on the word."""
         current_chr = word[index]
 
         current_word = None
@@ -54,16 +61,13 @@ class DictionaryGenerator:
 
     @classmethod
     def load_dictionary(cls, path):
-        """Load a dictionary from filesystem.
+        """Load a dictionary from the local file.
 
-        Args:
-            path (str): Path to the saved dictionary
-
-        Raises:
-            ValueError: If the path is not valid
-
-        Returns:
-            node: Returns a dictionary tree
+        :param path: Path where the dictionary stored in the filesystem
+        :type path: str
+        :raises ValueError: When the path to the saved dictionary is not valid
+        :return: Returns a new dictionary tree
+        :rtype: Node
         """
         if not isinstance(path, str) and not path:
             raise ValueError("Please provide a valid path to load the data")
@@ -82,10 +86,10 @@ class DictionaryGenerator:
         self.__words = words
 
     def generate_dictionary(self):
-        """[summary]
+        """Generate a new dictionary based on the words list.
 
-        :return: [description]
-        :rtype: [type]
+        :return: New dictionary tree
+        :rtype: Node
         """
         tree = Node("ROOT")
 
@@ -105,15 +109,15 @@ class DictionaryGenerator:
         return self.__tree
 
     def add_word_to_dictionary(self, word):
-        """Add word to the dictionary.
+        """Add word to generated dictionary.
 
-        Args:
-            word (str): Word to add.
-
-        Raises:
-            ValueError: If the word is not valid string.
-            ValueError: If the word is not a valid word.
-            ValueError: If there is no dictionary.
+        :param word: Word that needed to be added
+        :type word: str
+        :raises ValueError: When the word is not valid string
+        :raises ValueError: When the word is not a valid word
+        :raises ValueError: When there is no dictionary generated.
+        :return: New dictionary tree
+        :rtype: Node
         """
         if isinstance(word, str):
             raise ValueError("Please provide a valid word")
@@ -126,14 +130,14 @@ class DictionaryGenerator:
 
         self.__generate_tree(word, node=self.__tree)
 
+        return self.__tree
+
     def save_dictionary(self, path):
-        """Save dictionary to file.
+        """Save dictionary to local filesystem.
 
-        Args:
-            path (str): Path to store the dictionary.
-
-        Raises:
-            ValueError: If the path provided is not valid
+        :param path: Path to store the dictionary
+        :type path: str
+        :raises ValueError: When the path is not valid
         """
         if not isinstance(path, str) and not path:
             raise ValueError("Please provide a valid path to save the data")

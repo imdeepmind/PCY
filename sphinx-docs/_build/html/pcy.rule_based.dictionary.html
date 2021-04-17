@@ -246,39 +246,67 @@ understand everything.</p>
 <div class="section" id="module-pcy.rule_based.dictionary.dictionary_generator">
 <span id="pcy-rule-based-dictionary-dictionary-generator-module"></span><h2>pcy.rule_based.dictionary.dictionary_generator module<a class="headerlink" href="#module-pcy.rule_based.dictionary.dictionary_generator" title="Permalink to this headline">¶</a></h2>
 <p>Generate a dictionary tree based on words.</p>
-<dl class="simple">
-<dt>Raises:</dt><dd><p>ValueError: If the path is not valid
-ValueError: If the provided words list is not valid
-ValueError: If the words list is empty
-ValueError: If the path is not valid</p>
-</dd>
-<dt>Returns:</dt><dd><p>node: Dictionary tree node</p>
-</dd>
-</dl>
 <dl class="py class">
 <dt id="pcy.rule_based.dictionary.dictionary_generator.DictionaryGenerator">
 <em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">pcy.rule_based.dictionary.dictionary_generator.</span></code><code class="sig-name descname"><span class="pre">DictionaryGenerator</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">words</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pcy.rule_based.dictionary.dictionary_generator.DictionaryGenerator" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Generate a tree based on words list.</p>
-<dl class="simple">
-<dt>Raises:</dt><dd><p>ValueError: If the path is not valid
-ValueError: If the provided words list is not valid
-ValueError: If the words list is empty
-ValueError: If the path is not valid</p>
+<p>Generate a dictionary tree based on words.</p>
+<p>The DictionaryGenerator class generates dictionary tree that can be used the Autocomplete class to
+autocomplete incomplete words.</p>
+<dl>
+<dt>Code Example:</dt><dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pcy.rule_based.dictionary</span> <span class="kn">import</span> <span class="n">DictionaryGenerator</span>
+
+<span class="c1"># words list</span>
+<span class="n">words</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Apple&quot;</span><span class="p">,</span> <span class="s2">&quot;Anaconda&quot;</span><span class="p">]</span>
+
+<span class="c1"># initializing the DictionaryGenerator class</span>
+<span class="n">gen</span> <span class="o">=</span> <span class="n">DictionaryGenerator</span><span class="p">(</span><span class="n">words</span><span class="p">)</span>
+
+<span class="c1"># generating the tree</span>
+<span class="n">tree</span> <span class="o">=</span> <span class="n">gen</span><span class="o">.</span><span class="n">generate_dictionary</span><span class="p">()</span>
+</pre></div>
+</div>
 </dd>
-<dt>Returns:</dt><dd><p>node: Dictionary tree node</p>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ValueError</strong> – When the words is not a valid list</p></li>
+<li><p><strong>ValueError</strong> – When there is no words in the words list</p></li>
+<li><p><strong>ValueError</strong> – When the word is not valid string</p></li>
+<li><p><strong>ValueError</strong> – When the word is not valid</p></li>
+<li><p><strong>ValueError</strong> – When there is no dictionary tree</p></li>
+<li><p><strong>ValueError</strong> – When the path to save the tree is not valid</p></li>
+<li><p><strong>ValueError</strong> – When the path to save the tree is not valid</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Returns the tree</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Node</p>
 </dd>
 </dl>
 <dl class="py method">
 <dt id="pcy.rule_based.dictionary.dictionary_generator.DictionaryGenerator.add_word_to_dictionary">
 <code class="sig-name descname"><span class="pre">add_word_to_dictionary</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">word</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pcy.rule_based.dictionary.dictionary_generator.DictionaryGenerator.add_word_to_dictionary" title="Permalink to this definition">¶</a></dt>
-<dd><p>Add word to the dictionary.</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>word (str): Word to add.</p>
+<dd><p>Add word to generated dictionary.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>word</strong> (<em>str</em>) – Word that needed to be added</p>
 </dd>
-<dt>Raises:</dt><dd><p>ValueError: If the word is not valid string.
-ValueError: If the word is not a valid word.
-ValueError: If there is no dictionary.</p>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>ValueError</strong> – When the word is not valid string</p></li>
+<li><p><strong>ValueError</strong> – When the word is not a valid word</p></li>
+<li><p><strong>ValueError</strong> – When there is no dictionary generated.</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>New dictionary tree</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Node</p>
 </dd>
 </dl>
 </dd></dl>
@@ -286,9 +314,13 @@ ValueError: If there is no dictionary.</p>
 <dl class="py method">
 <dt id="pcy.rule_based.dictionary.dictionary_generator.DictionaryGenerator.generate_dictionary">
 <code class="sig-name descname"><span class="pre">generate_dictionary</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pcy.rule_based.dictionary.dictionary_generator.DictionaryGenerator.generate_dictionary" title="Permalink to this definition">¶</a></dt>
-<dd><p>Generate a dictionary tree.</p>
-<dl class="simple">
-<dt>Returns:</dt><dd><p>node: Returns a dictionary tree.</p>
+<dd><p>Generate a new dictionary based on the words list.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>New dictionary tree</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Node</p>
 </dd>
 </dl>
 </dd></dl>
@@ -296,13 +328,19 @@ ValueError: If there is no dictionary.</p>
 <dl class="py method">
 <dt id="pcy.rule_based.dictionary.dictionary_generator.DictionaryGenerator.load_dictionary">
 <em class="property"><span class="pre">classmethod</span> </em><code class="sig-name descname"><span class="pre">load_dictionary</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pcy.rule_based.dictionary.dictionary_generator.DictionaryGenerator.load_dictionary" title="Permalink to this definition">¶</a></dt>
-<dd><p>Load a dictionary from filesystem.</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>path (str): Path to the saved dictionary</p>
+<dd><p>Load a dictionary from the local file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – Path where the dictionary stored in the filesystem</p>
 </dd>
-<dt>Raises:</dt><dd><p>ValueError: If the path is not valid</p>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>ValueError</strong> – When the path to the saved dictionary is not valid</p>
 </dd>
-<dt>Returns:</dt><dd><p>node: Returns a dictionary tree</p>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Returns a new dictionary tree</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Node</p>
 </dd>
 </dl>
 </dd></dl>
@@ -310,11 +348,13 @@ ValueError: If there is no dictionary.</p>
 <dl class="py method">
 <dt id="pcy.rule_based.dictionary.dictionary_generator.DictionaryGenerator.save_dictionary">
 <code class="sig-name descname"><span class="pre">save_dictionary</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pcy.rule_based.dictionary.dictionary_generator.DictionaryGenerator.save_dictionary" title="Permalink to this definition">¶</a></dt>
-<dd><p>Save dictionary to file.</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>path (str): Path to store the dictionary.</p>
+<dd><p>Save dictionary to local filesystem.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – Path to store the dictionary</p>
 </dd>
-<dt>Raises:</dt><dd><p>ValueError: If the path provided is not valid</p>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>ValueError</strong> – When the path is not valid</p>
 </dd>
 </dl>
 </dd></dl>
