@@ -12,10 +12,10 @@ pcy.rule\_based.dictionary.autocomplete module
    :undoc-members:
    :show-inheritance:
 
-pcy.rule\_based.dictionary.generate\_dictionary module
-------------------------------------------------------
+pcy.rule\_based.dictionary.dictionary\_generator module
+-------------------------------------------------------
 
-.. automodule:: pcy.rule_based.dictionary.generate_dictionary
+.. automodule:: pcy.rule_based.dictionary.dictionary_generator
    :members:
    :undoc-members:
    :show-inheritance:

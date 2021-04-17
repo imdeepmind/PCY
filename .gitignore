@@ -1,4 +1,5 @@
-example.py
+_example.py
+_benchmark.py
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
@@ -71,7 +72,7 @@ instance/
 .scrapy
 
 # Sphinx documentation
-docs/_build/
+sphinx-docs/_build/
 
 # PyBuilder
 target/
