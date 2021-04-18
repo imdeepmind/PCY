@@ -3,8 +3,8 @@ Welcome to PCY: Python Completes You's documentation!
 
 PCY or Python Completes You is a autocomplete library that autocompletes incomplete words.
 
-For example if you have the word "Hous", Then it will output the several other words that starts with the word "Hous",
-for example the word "House".
+For example, if you have the word "Hous", Then it will output several other words that start with the word "Hous",
+like the word "House".
 
 .. toctree::
    :maxdepth: 2
