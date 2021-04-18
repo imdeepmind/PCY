@@ -9,8 +9,8 @@ from ._node import _Node as Node
 class DictionaryGenerator:
     """Generate a dictionary tree based on words.
 
-    The DictionaryGenerator class generates dictionary tree that can be used the Autocomplete class to
-    autocomplete incomplete words. 
+    The DictionaryGenerator class generates a dictionary tree that can be used by the Autocomplete class to
+    autocomplete incomplete words.
 
     Code Example:
         .. code-block:: python
@@ -26,16 +26,17 @@ class DictionaryGenerator:
             # generating the tree
             tree = gen.generate_dictionary()
 
-    :raises ValueError: When the words is not a valid list
-    :raises ValueError: When there is no words in the words list
-    :raises ValueError: When the word is not valid string
-    :raises ValueError: When the word is not valid
+    :raises ValueError: When the words are not a valid list
+    :raises ValueError: When there are no words in the words list
+    :raises ValueError: When the word is not a valid string
+    :raises ValueError: When the word is not a valid
     :raises ValueError: When there is no dictionary tree
-    :raises ValueError: When the path to save the tree is not valid 
-    :raises ValueError: When the path to save the tree is not valid 
+    :raises ValueError: When the path to save the tree is not valid
+    :raises ValueError: When the path to save the tree is not valid
     :return: Returns the tree
     :rtype: Node
     """
+
     @staticmethod
     def __generate_tree(word, index=0, node=None):
         """Generate a tree based on the word."""
@@ -133,7 +134,7 @@ class DictionaryGenerator:
         return self.__tree
 
     def save_dictionary(self, path):
-        """Save dictionary to local filesystem.
+        """Save dictionary to the local filesystem.
 
         :param path: Path to store the dictionary
         :type path: str

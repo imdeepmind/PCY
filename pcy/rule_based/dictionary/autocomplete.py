@@ -1,13 +1,13 @@
-"""Make a Autocomplete class to autocomplete incomplete words using dictionary."""
+"""Make an Autocomplete class to autocomplete incomplete words using a dictionary tree."""
 
 from functools import lru_cache
 from ._node import _Node as Node
 
 
 class Autocomplete:
-    """Make a Autocomplete class to autocomplete incomplete words using dictionary.
+    """Make an Autocomplete class to autocomplete incomplete words using a dictionary tree.
 
-    The Autocomplete class receives Dictionary tree in its __init__ method. To get the Dictionary tree,
+    The Autocomplete class receives a Dictionary tree in its __init__ method. To get the Dictionary tree,
     we need to use the DictionaryGenerator class.
 
     To generate word suggestions, you need to call the .autocomplete method. Look at the example below to
@@ -25,7 +25,7 @@ class Autocomplete:
             # here the word "hous" is the incomplete word and 10 is the number of suggestions to return
             words = auto.autocomplete("hous", 10)
 
-            # printing the words 
+            # printing the words
             print(words)
 
             # --> ['housage', 'housal', 'housatonic', 'house', 'houseball', 'houseboat', 'houseboating', 'houseboats',
@@ -35,6 +35,7 @@ class Autocomplete:
     :type dictionary: node
     :raises ValueError: When the provided dictionary is not valid
     """
+
     def __init__(self, dictionary):
         """Constructor method."""
         if not isinstance(dictionary, Node):
@@ -55,20 +56,16 @@ class Autocomplete:
         :raises ValueError: When the incomplete_word is not valid string
         :raises ValueError: When incomplete_word is empty
         :raises ValueError: When the no_of_suggestions is less than zero
-        :return: Array of string containing suggestions
+        :return: An array of strings containing suggestions
         :rtype: str[]
         """
         if not isinstance(incomplete_word, str):
             raise ValueError("Please provide a valid incomplete_word")
 
         if not incomplete_word:
-            raise ValueError(
-                "Invalid incomplete_word, please provide at least once character"
-            )
+            raise ValueError("Invalid incomplete_word, please provide at least once character")
 
         if no_of_suggestions < 1:
             raise ValueError("Please provide a valid no_of_suggestions")
 
-        return self.__dictionary.autocomplete_incomplete_word(
-            incomplete_word, no_of_suggestions
-        )
+        return self.__dictionary.autocomplete_incomplete_word(incomplete_word, no_of_suggestions)

@@ -1,10 +1,10 @@
-.. PCY: Python Completes You documentation master file, created by
-   sphinx-quickstart on Wed Apr 14 15:11:50 2021.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
-
 Welcome to PCY: Python Completes You's documentation!
 =====================================================
+
+PCY or Python Completes You is a autocomplete library that autocompletes incomplete words.
+
+For example, if you have the word "Hous", Then it will output several other words that start with the word "Hous",
+like the word "House".
 
 .. toctree::
    :maxdepth: 2
