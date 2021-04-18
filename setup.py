@@ -1,7 +1,8 @@
 from setuptools import setup
 
 long_description = """
-A super-fast Python based Autocomplete library that autocomplete incomplete words using various methods like dictionary lookup, ML based models, etc.
+A super-fast Python based Autocomplete library that autocomplete incomplete words using various methods
+like dictionary lookup, ML based models, etc.
 
 For more information, please check the official documentation at https://imdeepmind.com/python-completes-you/
 """
@@ -32,11 +33,7 @@ setup(
         "Programming Language :: Python :: 3.8",
         "Programming Language :: Python :: 3.9",
     ],
-    packages=[
-        "pcy",
-        "pcy.rule_based",
-        "pcy.rule_based.dictionary"
-    ],
+    packages=["pcy", "pcy.rule_based", "pcy.rule_based.dictionary"],
     install_requires=["py-progress"],
     extras_require={"tests": ["flake8", "black"]},
     include_package_data=True,
