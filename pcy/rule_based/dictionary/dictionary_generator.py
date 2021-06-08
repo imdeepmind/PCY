@@ -18,7 +18,7 @@ class DictionaryGenerator:
             from pcy.rule_based.dictionary import DictionaryGenerator
 
             # words list
-            words = ["Apple", "Anaconda"]
+            words = [{"words": "Apple", "data": {"color": "red"}}, {"words": "Anaconda", "data": {"color": "black"}}]
 
             # initializing the DictionaryGenerator class
             gen = DictionaryGenerator(words)

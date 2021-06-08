@@ -257,7 +257,7 @@ autocomplete incomplete words.</p>
 <dt>Code Example:</dt><dd><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pcy.rule_based.dictionary</span> <span class="kn">import</span> <span class="n">DictionaryGenerator</span>
 
 <span class="c1"># words list</span>
-<span class="n">words</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Apple&quot;</span><span class="p">,</span> <span class="s2">&quot;Anaconda&quot;</span><span class="p">]</span>
+<span class="n">words</span> <span class="o">=</span> <span class="p">[{</span><span class="s2">&quot;words&quot;</span><span class="p">:</span> <span class="s2">&quot;Apple&quot;</span><span class="p">,</span> <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;color&quot;</span><span class="p">:</span> <span class="s2">&quot;red&quot;</span><span class="p">}},</span> <span class="p">{</span><span class="s2">&quot;words&quot;</span><span class="p">:</span> <span class="s2">&quot;Anaconda&quot;</span><span class="p">,</span> <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;color&quot;</span><span class="p">:</span> <span class="s2">&quot;black&quot;</span><span class="p">}}]</span>
 
 <span class="c1"># initializing the DictionaryGenerator class</span>
 <span class="n">gen</span> <span class="o">=</span> <span class="n">DictionaryGenerator</span><span class="p">(</span><span class="n">words</span><span class="p">)</span>
