@@ -79,7 +79,7 @@ class _Node:
         words = []
 
         if node.word:
-            words.append(node.word)
+            words.append({"word": node.word, "data": node.data})
             self.__found_words += 1
 
         if len(node.children) > 0:
@@ -133,6 +133,15 @@ class _Node:
         return self.__word
 
     @property
+    def data(self):
+        """Getter for data.
+
+        Returns:
+            any: Data of the node.
+        """
+        return self.__data
+
+    @property
     def parent(self):
         """Getter for parent.
 
@@ -150,7 +159,7 @@ class _Node:
         """
         return self.__children
 
-    def __init__(self, key, word=None, parent=None):
+    def __init__(self, key, word=None, parent=None, data=None):
         """Node in the dictionary tree.
 
         A node contains the key, the word, it;s parent, and its children.
@@ -165,6 +174,7 @@ class _Node:
         self.__parent = parent
         self.__children = []
         self.__found_words = 0
+        self.__data = data
 
     def add_child(self, node):
         """Add a child to the node.
@@ -202,13 +212,14 @@ class _Node:
         """
         return _Node.__find_key_in_level(self, key)
 
-    def add_word(self, word):
+    def add_word(self, word, data=None):
         """Add word in the node.
 
         Args:
             word (str): Word to add.
         """
         self.__word = word
+        self.__data = data
 
     def autocomplete_incomplete_word(self, incomplete_word, no_of_words):
         """Complete the word based on incomplete_word.

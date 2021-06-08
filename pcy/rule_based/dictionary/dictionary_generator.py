@@ -38,7 +38,7 @@ class DictionaryGenerator:
     """
 
     @staticmethod
-    def __generate_tree(word, index=0, node=None):
+    def __generate_tree(word, data=None, index=0, node=None):
         """Generate a tree based on the word."""
         current_chr = word[index]
 
@@ -51,14 +51,13 @@ class DictionaryGenerator:
         if is_child_node_exists:
             child_node = is_child_node_exists
 
-            if child_node.word is None:
-                child_node.add_word(current_word)
+            child_node.add_word(current_word, data)
         else:
-            child_node = Node(current_chr, word=current_word, parent=node)
+            child_node = Node(current_chr, word=current_word, parent=node, data=data)
             node.add_child(child_node)
 
         if len(word) > index + 1:
-            DictionaryGenerator.__generate_tree(word, index=index + 1, node=child_node)
+            DictionaryGenerator.__generate_tree(word, data, index=index + 1, node=child_node)
 
     @classmethod
     def load_dictionary(cls, path):
@@ -85,6 +84,7 @@ class DictionaryGenerator:
             raise ValueError("There is no words in the list")
 
         self.__words = words
+        self.__tree = None
 
     def generate_dictionary(self):
         """Generate a new dictionary based on the words list.
@@ -99,9 +99,9 @@ class DictionaryGenerator:
                 index,
                 len(self.__words),
                 f"{index+1}/{len(self.__words)}",
-                f"Current Char: {word[0]}",
+                f"Current Char: {word['words'][0]}",
             )
-            DictionaryGenerator.__generate_tree(word.lower(), node=tree)
+            DictionaryGenerator.__generate_tree(word["words"].lower(), data=word["data"], node=tree)
 
         print("")
 
@@ -109,7 +109,7 @@ class DictionaryGenerator:
 
         return self.__tree
 
-    def add_word_to_dictionary(self, word):
+    def add_word_to_dictionary(self, word, data=None):
         """Add word to generated dictionary.
 
         :param word: Word that needed to be added
@@ -120,7 +120,7 @@ class DictionaryGenerator:
         :return: New dictionary tree
         :rtype: Node
         """
-        if isinstance(word, str):
+        if not isinstance(word, str):
             raise ValueError("Please provide a valid word")
 
         if not word:
@@ -129,7 +129,7 @@ class DictionaryGenerator:
         if not self.__tree:
             raise ValueError("Please create a dictionary first")
 
-        self.__generate_tree(word, node=self.__tree)
+        self.__generate_tree(word, data=data, node=self.__tree)
 
         return self.__tree
 
