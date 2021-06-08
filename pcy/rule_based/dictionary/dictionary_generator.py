@@ -78,7 +78,7 @@ class DictionaryGenerator:
     def __init__(self, words):
         """Constructor method for the class DictionaryGenerator"""
         if not isinstance(words, list):
-            raise ValueError("Please provide a valid list of words")
+            raise ValueError("Please provide a valid dictionary list with words and data")
 
         if len(words) < 1:
             raise ValueError("There is no words in the list")
@@ -114,6 +114,8 @@ class DictionaryGenerator:
 
         :param word: Word that needed to be added
         :type word: str
+        :param data: Data that needed to be added with the word
+        :type word: any
         :raises ValueError: When the word is not valid string
         :raises ValueError: When the word is not a valid word
         :raises ValueError: When there is no dictionary generated.
