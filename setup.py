@@ -9,7 +9,7 @@ For more information, please check the official documentation at https://imdeepm
 
 setup(
     name="pcy",
-    version="0.1.0",
+    version="0.2.0",
     description="PCY (Python Completes You): Autocomplete library for the Python",
     long_description=long_description,
     url="https://imdeepmind.com/python-completes-you/",
